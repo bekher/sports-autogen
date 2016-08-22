@@ -1,0 +1,25 @@
+{
+  "name": "sports-autogen",
+  "version": "1.0.0",
+  "description": "Generates cliche athlete interviews.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cliche",
+    "markov",
+    "interview",
+    "generate"
+  ],
+  "author": "Greg Bekher",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^1.2.1",
+    "koa-better-ratelimit": "^2.1.2",
+    "koa-router": "^5.4.0",
+    "markov-strings": "^1.1.0",
+    "shuffle-array": "^1.0.0"
+  }
+}
