@@ -4,8 +4,7 @@
   "description": "Generates cliche athlete interviews.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [
     "cliche",
@@ -14,7 +13,7 @@
     "generate"
   ],
   "author": "Greg Bekher",
-  "license": "ISC",
+  "license": "GPL-3.0+",
   "dependencies": {
     "koa": "^1.2.1",
     "koa-better-ratelimit": "^2.1.2",
