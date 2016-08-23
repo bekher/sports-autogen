@@ -2,7 +2,6 @@ const Markov = require('markov-strings');
 const shuffle = require('shuffle-array');
 const fs = require('fs');
 
-
 // Generate very random sentences
 const loose_options = {
   stateSize: 1,
@@ -10,22 +9,20 @@ const loose_options = {
   minWords: 4,
   minScore: 15,
   checker: sentence => {
-    return sentence.endsWith('.') || sentence.endsWith(',');
+    return sentence.endsWith('.'); 
   }
 };
 
 // Generate better but less random sentences
 const tight_options = {
   stateSize : 2,
-  maxLength : 140,
+  maxLength : 110,
   minWords : 4,
   minScore: 15,
   checker: sentence => {
-    return sentence.endsWith('.') || sentence.endsWith(',');
+    return sentence.endsWith('.'); 
   }
 };
-
-const high = 4, low = 1;
 
 module.exports =  class SportsGenerator {
 
@@ -39,11 +36,12 @@ module.exports =  class SportsGenerator {
     this.tight_markov = new Markov(data, tight_options);
 
     // Build the corpora
-    Promise.all([this.loose_markov.buildCorpus(), this.tight_markov.buildCorpus()])
+    Promise.all([this.loose_markov.buildCorpus(), 
+                 this.tight_markov.buildCorpus()])
 
   }
 
-  generate() {
+  generate(low = 1, high = 4) {
     const num_loose = Math.floor(Math.random() * (high - low) + low);
     const num_tight = Math.floor(Math.random() * (high - low) + low);
     var res = [];
@@ -69,13 +67,14 @@ module.exports =  class SportsGenerator {
       return build_res(num_tight, _this.tight_markov, resolve);
     });
     
+    // to properly exec a then in the router, we need to return a clean promise
     return new Promise(function(resolve,reject) {
       Promise.all([p1, p2]).then( (vals) => {
         // randomize results
         shuffle(res);
 
         // for apperance, we want the first sentence to make sense
-        // so let's force it with the tighter chain
+        // so we force it to be generated with the tighter chain
         _this.tight_markov.generateSentence()
         .then(result => {
           res.unshift(result);
@@ -84,7 +83,6 @@ module.exports =  class SportsGenerator {
             return item.string
           }).join(' ');
 
-          console.log(interview);
           resolve(interview);
         });
       });

@@ -5,12 +5,6 @@ const SportsGen = require('./markov');
 
 var gen = new SportsGen();
 
-var g = gen.generate()//.then( (res) => {
-//  console.log(res);
-//});
-
-console.log(g);
-
 app.use(limit({
   duration: 1000 * 60 * 1, //1 mins
   max: 60
