@@ -1,5 +1,5 @@
 # Sports-Autogen
-### This small webapp uses Markov chains to generate short, sound-byte post-game interviews you would hear on ESPN.
+### This small webapp uses Markov chains to generate short, post-game interview soundbites that one would hear on ESPN.
 
 [See it live!](https://bekher.net/sports)
 
