@@ -35,11 +35,11 @@ module.exports =  class SportsGenerator {
     const data = fs.readFileSync('interviews.txt').toString().split('\n');
 
     // Instantiate the generators
-    const loose_markov = new Markov(data, loose_options);
-    const tight_markov = new Markov(data, tight_options);
+    this.loose_markov = new Markov(data, loose_options);
+    this.tight_markov = new Markov(data, tight_options);
 
     // Build the corpora
-    Promise.all([loose_markov.buildCorpus(), tight_markov.buildCorpus()])
+    Promise.all([this.loose_markov.buildCorpus(), this.tight_markov.buildCorpus()])
 
   }
 
@@ -60,22 +60,23 @@ module.exports =  class SportsGenerator {
       }
     }
     
+    var _this = this;
     const p1 = new Promise(function(resolve,reject) {
-      return build_res(num_loose, loose_markov, resolve);
+      return build_res(num_loose, _this.loose_markov, resolve);
     });
 
     const p2 = new Promise(function(resolve,reject) {
-      return build_res(num_tight, tight_markov, resolve);
+      return build_res(num_tight, _this.tight_markov, resolve);
     });
     
-    Promise.all([p1, p2]).then( (vals) => {
+    return new Promise(function(resolve,reject) {
+      Promise.all([p1, p2]).then( (vals) => {
         // randomize results
         shuffle(res);
-        console.log('here');
 
         // for apperance, we want the first sentence to make sense
         // so let's force it with the tighter chain
-        tight_markov.generateSentence()
+        _this.tight_markov.generateSentence()
         .then(result => {
           res.unshift(result);
           // Set picks out the uniq's, and concat each string
@@ -84,8 +85,10 @@ module.exports =  class SportsGenerator {
           }).join(' ');
 
           console.log(interview);
+          resolve(interview);
         });
       });
+    });
   }
 }
 

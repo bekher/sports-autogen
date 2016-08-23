@@ -17,15 +17,14 @@ app.use(limit({
   //blackList: ['127.0.0.1']
 }));
 
-router.get('/', function (next) {
+router.get('/', function * (next) {
   this.body = "hello world!";
-  next();
+  yield next;
 });
 
 router.get('/gen', function * (next) {
-  this.body = gen.generate().then( (res) => {
-    console.log(res);
-    return res;
+  yield gen.generate().then( (stuff) => {
+   this.body = stuff; 
   });
   yield next;
 });
