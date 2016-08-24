@@ -18,6 +18,7 @@
     "koa": "^1.2.1",
     "koa-better-ratelimit": "^2.1.2",
     "koa-router": "^5.4.0",
+    "koa-static": "^2.0.0",
     "markov-strings": "^1.1.0",
     "shuffle-array": "^1.0.0"
   }

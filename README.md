@@ -10,6 +10,8 @@ While watching the 2016 Olympics, I noticed that all of the athlete post-competi
 
 
 ## Install
+Requires NodeJS 6.x.x
+
 `git clone https://github.com/bekher/sports-autogen`
 
 `npm install`

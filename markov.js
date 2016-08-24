@@ -38,10 +38,11 @@ module.exports =  class SportsGenerator {
     // Build the corpora
     Promise.all([this.loose_markov.buildCorpus(), 
                  this.tight_markov.buildCorpus()])
-
   }
 
   generate(low = 1, high = 4) {
+    var _this = this;
+
     const num_loose = Math.floor(Math.random() * (high - low) + low);
     const num_tight = Math.floor(Math.random() * (high - low) + low);
     var res = [];
@@ -51,6 +52,8 @@ module.exports =  class SportsGenerator {
         model.generateSentence()
         .then(result => {
           res.push(result);
+
+          // not the best way of exec'ing a callback on completion 
           if (i + 1 == num_sentences) {
             cb(res)
           }
@@ -58,7 +61,6 @@ module.exports =  class SportsGenerator {
       }
     }
     
-    var _this = this;
     const p1 = new Promise(function(resolve,reject) {
       return build_res(num_loose, _this.loose_markov, resolve);
     });

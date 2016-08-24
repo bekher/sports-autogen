@@ -3,22 +3,20 @@ var router = require('koa-router')();
 var limit = require('koa-better-ratelimit');
 const SportsGen = require('./markov');
 
-var gen = new SportsGen();
-
+// Rate limit the API, markov modeling isn't that cheap
 app.use(limit({
-  duration: 1000 * 60 * 1, //1 mins
-  max: 60
-  //blackList: ['127.0.0.1']
+  duration: 1000 * 100 * 3, // 3 mins
+  max: 60,
+  // blacklist: ['127.0.0.1']
 }));
 
-router.get('/', function * (next) {
-  this.body = "hello world!";
-  yield next;
-});
+app.use(require('koa-static')('static/'));
+
+var gen = new SportsGen();
 
 router.get('/gen', function * (next) {
-  yield gen.generate().then( (stuff) => {
-   this.body = stuff; 
+  yield gen.generate().then( (interview) => {
+   this.body = `"${interview}"`;
   });
   yield next;
 });
