@@ -25,5 +25,5 @@ app.use(router.routes())
 .use(router.allowedMethods());
 
 var port = process.env.PORT || 8080;
-app.listen(8080);
+app.listen(port);
 console.log('Sports-autogen server start listening on port ' + port);
