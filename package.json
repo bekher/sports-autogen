@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Generates cliche athlete interviews.",
   "main": "index.js",
+  "engines": {
+      "node": "6.3.x"
+  },
   "scripts": {
     "start": "node index.js"
   },
