@@ -24,6 +24,6 @@ router.get('/gen', function * (next) {
 app.use(router.routes())
 .use(router.allowedMethods());
 
-var port = process.env.PORT || 3333;
-app.listen(3333);
+var port = process.env.PORT || 80;
+app.listen(80);
 console.log('Sports-autogen server start listening on port ' + port);
