@@ -1,9 +1,9 @@
 # Sports-Autogen
 ### This small webapp uses Markov chains to generate short, post-game interview soundbites that one would hear on ESPN.
 
-[See it live!](https://bekher.net/sports)
+[See it live!](https://sports-autogen.herokuapp.com)
 
-While watching the 2016 Olympics, I noticed that all of the athlete post-competition interviews sound very generic and similar. Generally, all post-game interviews for any sport use plenty of cliches, making it a perfect application for demonstrating the beauty of Markov chains.
+While watching the 2016 Olympics, I noticed that all of the athlete post-competition interviews sound very generic and similar. Generally, all post-game interviews for any sport use plenty of cliches, making it a perfect application for demonstrating the beauty of Markov Chains.
 
 *Sample output:*
 > We have to shore up their offensive production. We're tickled to contain them. Execution wise we really gave it is possible. We have a tremendous work ethic. They have kept their heads up through the difficult times. We have to play with their mental toughness. They’ve come together as best and had a tough but not break. We have to stick to their bread-and-butter offense. 
