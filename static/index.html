@@ -21,19 +21,23 @@
           <h1 class="ui inverted dividing huge header">
             Generic sport interview generator
           </h1>
-    <p class="large text">Ever notice that most athlete and coach post-game interviews sound exactly alike? This app generates almost realistic athlete interviews using markov chains. Try it out, and imagine an athlete reciting this text <br><br>Inspired by <a href="http://mrsharpoblunto.github.io/foswig.js/">this project</a>. Check out the code for this tool <a href="https://github.com/bekher/sports-autogen">here</a>.<p>
+    <p class="large text">Ever notice that most athlete and coach post-game interviews sound exactly alike? This app generates almost realistic athlete interviews using Markov Chains. Try it out, and imagine an athlete reciting this text <br><br>Inspired by <a href="http://mrsharpoblunto.github.io/foswig.js/">this project</a>. Check out the code for this tool <a href="https://github.com/bekher/sports-autogen">here</a>.<p>
     <div id="gen-button" class="ui huge primary button"> Generate </div>
         </div>
 
       </div>
       <div id="quotebox" class="ui equal width centered center aligned padded grid">
         <div class="twelve wide column">
+          <h2>Q: How do you feel about the {game, match, event, score, win, loss}?</h2>
           <div class="ui message">
-            <h1 id="interview-body"><br></h1>
+            <i class="big grey left quote icon"></i>
+            <h1 id="interview-body"></h1>
+            <p id="right-quote"><i class="big grey right quote icon"></i></p>
           </div>
         </div>
       </div>
     </div>
+    <div class="empty"></div>
     </main>
     <div class="footer">
       <div class="ui inverted vertical footer segment">

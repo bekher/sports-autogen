@@ -7,12 +7,9 @@ $(function () {
 
   function setInterviewText(response) {
     $("#quotebox").show();
-    $("#interview-body:last").html(response);
-    /*
-    if ($("#gen-icon").attr("class") === "right arrow icon") {
-      $("#gen-icon").removeClass("arrow").addClass("refresh");
-    }
-   */
+
+    var clean_res = response.replace(/\"/g, "");
+    $("#interview-body:last").html(clean_res);
   }
 
   function getInterview(cb) {
